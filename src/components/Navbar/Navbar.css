@@ -1,0 +1,19 @@
+.navbar{
+    background-color: #212121;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+svg{
+    color: #fff;
+}
+
+path{
+    /* fill: #fff; */
+    stroke: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar ul{
+        background-color: #212121d7;
+    }
+}

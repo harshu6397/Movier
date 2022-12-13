@@ -1,0 +1,78 @@
+.itemName{
+    max-height: 8rem;
+    height: 8rem;
+}
+
+.items-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 0 20px;
+}
+
+.items-container .Carousel{
+    background-color: #212121;
+    border: 1px solid rgba(255,255,255,.1);
+    color: #fff;
+    border-radius: 5px;
+    margin: 11px 5px;
+    position: relative;
+    cursor: pointer;
+}
+
+.p-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-family: Dosis,sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    padding: 12px 15px;
+    z-index: 2;
+    width: 120px;
+    height: 38px;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: all .5s ease-out;
+}
+
+.searchInput{
+    height: 44px;
+    background: #212121;
+    border: 1px solid #716e6e;
+    color: #fff;
+    font-size: 15px;
+    width: 30rem;
+    outline: none;
+}
+
+.searchBtn{
+    height: 44px;
+    border-radius: 0;
+    width: 55px;
+}
+
+.new-sd{
+    margin-bottom: 0 !important;
+}
+
+.loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+}
+
+@media screen and (max-width: 768px){
+    .items-container{
+        padding: 0 10px;
+        justify-content: center;
+    }
+}
+

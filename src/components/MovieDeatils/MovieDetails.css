@@ -1,0 +1,26 @@
+.deatils-conatiner .hero-slide-item{
+    height: 37rem;
+    padding-top: 0;
+}
+
+.deatils-conatiner .item-content-wraper {
+    width: 40% !important;
+}
+
+.c-btn{
+    width: 160px !important;
+}
+
+.play-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 768px){
+    .deatils-conatiner .item-content-wraper {
+        width: 100% !important;
+    }
+    
+}

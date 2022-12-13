@@ -6,9 +6,21 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.2.0",
+    "bear-react-carousel": "^2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-elastic-carousel": "^0.11.5",
+    "react-icons": "^4.7.1",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-items-carousel": "^2.8.0",
+    "react-owl-carousel": "^2.3.3",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.4.5",
     "react-scripts": "5.0.1",
+    "react-slick-carousel": "^0.14.9",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -34,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
   }
 }
