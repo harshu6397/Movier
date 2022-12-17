@@ -294,13 +294,13 @@ a.movie-item:hover {
   margin: 0 .5rem !important;
 }
 
-.Slxdj{
+.hGPzOw{
   cursor: pointer;
   background-color: rgb(182 178 178 / 60%) !important; 
   font-size: 1.5rem !important;
 }
 
-.Slxdj:disabled{
+.hGPzOw:disabled{
   cursor: not-allowed !important;
   background-color: rgb(182 178 178 / 60%) !important; 
   width: 30px !important;
@@ -310,7 +310,7 @@ a.movie-item:hover {
 
 }
 
-.kXteup{
+.hGRYOm{
   background-color: rgb(182 178 178 / 60%) !important; 
   outline: none !important;
   font-size: 1.5rem !important;
@@ -321,7 +321,7 @@ a.movie-item:hover {
   color: #ffffff !important;
 }
 
-.kXteup:hover{
+.hGRYOm:hover{
   /* background-color: #06B6D4 !important; */
   color: #06B6D4 !important;
 }
