@@ -10,41 +10,36 @@ const Main = () => {
     const [series, setSeries] = useState([])
     const [tvShows, setTvShows] = useState([])
     const [latestMovies, setLatestMovies] = useState([])
-    // const [topRatedMovies, setTopRatedMovies] = useState([])
-    // const [upComingMovies, setUpComingMovies] = useState([])
 
+     // Variables for API
+     const baseUrl = "https://api.themoviedb.org/3";
+     const apiKey = process.env.REACT_APP_TMDB_API_KEY;
+     const language = "en-US";
+
+    // Get Slider Images
     const getSliderImage = async () => {
-        const response = await axios.get("https://api.themoviedb.org/3/movie/now_playing?api_key=2beb22c118b4fce0394ce433a0c50f94");  
+        const response = await axios.get(`${baseUrl}/movie/now_playing?api_key=${apiKey}`);  
         setSliderImage(response.data.results);
     }
 
+    // Get Latest Movies
     const getLatestMovies = async () => {
-      const response = await axios.get("https://api.themoviedb.org/3/movie/popular?api_key=2beb22c118b4fce0394ce433a0c50f94");
+      const response = await axios.get(`${baseUrl}/movie/popular?api_key=${apiKey}`);
       setLatestMovies(response.data.results);
     }
-
-    // const getTopRatedMovies = async () => {
-    //   const response = await axios.get("https://api.themoviedb.org/3/movie/top_rated?api_key=2beb22c118b4fce0394ce433a0c50f94")
-    //   setTopRatedMovies(response.data.results);
-    // }
-
-    // const getUpComingMovies = async () => {
-    //   const response = await axios.get("https://api.themoviedb.org/3/movie/upcoming?api_key=2beb22c118b4fce0394ce433a0c50f94")
-    //   setUpComingMovies(response.data.results);
-    //   console.log("upcoming", response.data.results)
-    // }
     
+    // Get Series
     const getSeries = async () => {
-      const response = await axios.get("https://api.themoviedb.org/3/trending/tv/day?api_key=2beb22c118b4fce0394ce433a0c50f94");
+      const response = await axios.get(`${baseUrl}/trending/tv/day?api_key=${apiKey}`);
       setSeries(response.data.results);
     }
 
+    // Get Tv Shows
     const getTvShows = async () => {
       const pages = 5;
       const tv_shows = [];
       for (let i = 1; i < pages; i++) {
-        const response = await axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=2beb22c118b4fce0394ce433a0c50f94&language=en-US&page=${i}`);
-        // setTvShows(response.data.results);
+        const response = await axios.get(`${baseUrl}/tv/popular?api_key=${apiKey}&language=${language}&page=${i}`);
         response.data.results.forEach(item => {
             if(!item['origin_country'].includes('US')){
               tv_shows.push(item)
@@ -59,17 +54,13 @@ const Main = () => {
       getSeries();
       getTvShows();
       getLatestMovies();
-      // getTopRatedMovies();
-      // getUpComingMovies();
     }, []);
 
   return (
     <div className='main-container'>
       <Navbar />
       <Slider sliderImage={sliderImage} />
-      {/* <MainSlider itemName="upcoming movies" items={upComingMovies} /> */}
       <MainSlider itemName="latest movies" items={latestMovies} />
-      {/* <MainSlider itemName="top rated movies" items={topRatedMovies} /> */}
       <MainSlider itemName="latest series" items={series} />
       <MainSlider itemName="latest tv shows" items={tvShows} />
       <Footer/>

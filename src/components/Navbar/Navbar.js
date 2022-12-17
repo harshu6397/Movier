@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
 import './Navbar.css'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import { GrHomeRounded } from 'react-icons/gr';
 import { BiMoviePlay } from 'react-icons/bi'
 import { RiTvLine } from 'react-icons/ri'
 import { AiOutlineVideoCamera } from 'react-icons/ai'
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -49,12 +49,12 @@ const Navbar = () => {
                     </div>
                     <Link to='/tv-shows' className='text-xl hover:text-cyan-500 duration-500 text-white'>Tv Shows</Link>
                 </li>
-                <li className='mx-4 my-6 md:my-0 flex gap-3'>
+                {/* <li className='mx-4 my-6 md:my-0 flex gap-3'>
                     <div className="text-white text-2xl flex gap-3 items-center md:hidden">
                         <AiOutlineVideoCamera />
                     </div>
                     <Link to='/genres' className='text-xl hover:text-cyan-500 duration-500 text-white'>Genres</Link>
-                </li>
+                </li> */}
             </ul>
         </nav>
     )

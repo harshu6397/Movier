@@ -1,81 +1,40 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
         <>
-            <footer className="section w-full">
-                <div className="container text-white px-5">
+            <footer className="section w-full border-t-[1px] border-white border-opacity-20">
+                <div className="container text-white">
                     <div className="row flex gap-10 ml-10 justify-center items-center">
                         <div className="col-4 col-md-6 col-sm-12 w-full">
                             <div className="content text-center">
-                                {/* <a href="#" className="logo">
-                                    <i className='bx bx-movie-play bx-tada main-color'></i>Mov<span className="main-color">i</span>er
-                                </a>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut veniam ex quos hic id nobis beatae earum sapiente! Quod ipsa exercitationem officiis non error illum minima iusto et. Dolores, quibusdam?
-                                </p> */}
                                 <div className="social-list flex justify-center">
-                                    <Link to="#" className="social-item">
+                                    <a href="https://github.com/harshu6397" className="social-item">
                                         <i className="bx bxl-github"></i>
-                                    </Link>
-                                    <Link to="#" className="social-item">
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/harsh-kumar-653331214/" className="social-item">
                                         <i className="bx bxl-linkedin"></i>
-                                    </Link>
-                                    <Link to="#" className="social-item">
+                                    </a>
+                                    <a href="https://twitter.com/Harshu6397" className="social-item">
                                         <i className="bx bxl-twitter"></i>
-                                    </Link>
-                                    <Link to="#" className="social-item">
+                                    </a>
+                                    <a href="https://www.instagram.com/harshu_6397/" className="social-item">
                                         <i className="bx bxl-instagram"></i>
-                                    </Link>
+                                    </a>
+                                    <a href="mailto:harshkumarkardam258@gmail.com" className="social-item">
+                                    <svg _ngcontent-lkn-c3="" fill="#05a6c1" height="15" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path _ngcontent-lkn-c3="" stroke='#05a6c1' d="M0 3v18h24V3H0zm21.518 2L12 12.713 2.482 5h19.036zM2 19V7.183l10 8.104 10-8.104V19H2z"></path></svg>
+                                    </a>
                                 </div>
                                 <div className="copyright text-white border-none">
                                    &copy; 2022 Harsh Kumar | All Rights Reserved 
                                 </div>
                                 <div className="copyright text-white border-none">
-                                    Designed and built by me, data provided by <Link className='text-cyan' to="https://www.themoviedb.org/" target='_blank' rel='noreferrer'>
+                                    Designed and built by me, data provided by <a className='text-cyan' href="https://www.themoviedb.org/" target='_blank' rel='noreferrer'>
                                         <span className="text-cyan-400" >TMDb</span>
-                                    </Link>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        {/* <div className="col-8 col-md-6 col-sm-12 w-3/6">
-                    <div className="row md:flex flex flex-wrap gap-16">
-                        <div className="col-3 col-md-6 col-sm-6">
-                            <div className="content">
-                                <p><b>Flix</b></p>
-                                <ul className="footer-menu leading-9">
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">My profile</a></li>
-                                    <li><a href="#">Pricing plans</a></li>
-                                    <li><a href="#">Contacts</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-3 col-md-6 col-sm-6">
-                            <div className="content">
-                                <p><b>Browse</b></p>
-                                <ul className="footer-menu leading-9">
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">My profile</a></li>
-                                    <li><a href="#">Pricing plans</a></li>
-                                    <li><a href="#">Contacts</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-3 col-md-6 col-sm-6">
-                            <div className="content">
-                                <p><b>Help</b></p>
-                                <ul className="footer-menu leading-9">
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">My profile</a></li>
-                                    <li><a href="#">Pricing plans</a></li>
-                                    <li><a href="#">Contacts</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
                     </div>
                 </div>
             </footer>

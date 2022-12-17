@@ -1,7 +1,32 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import ReactElasticCarousel from "react-elastic-carousel";
 import { Link } from "react-router-dom";
 
 const MainSlider = ({ itemName, items }) => {
+    const [genresList, setGenresList] = useState([]);
+
+    // Variables for API
+    const baseUrl = "https://api.themoviedb.org/3";
+    const apiKey = process.env.REACT_APP_TMDB_API_KEY;
+    const language = "en-US";
+    
+    // Get genres list
+    const getGenresList = async () => {
+        const response = await axios.get(`${baseUrl}/genre/movie/list?api_key=${apiKey}&language=${language}`);
+        // setGenresList(response.data.genres);
+        const geṇres = {}
+        response.data.genres.forEach(item => {
+            geṇres[item.id] = item.name
+        })
+        setGenresList(geṇres);
+    }
+
+    useEffect(() => {
+        getGenresList();
+    }, [])
+
+
     return (
         <div className={`section ${itemName}`}>
             <div className="container">
@@ -46,7 +71,8 @@ const MainSlider = ({ itemName, items }) => {
                     {
                         items?.map((item, index) => {
                             return <div
-                                className="Carousel w-[19.5rem] ml-2 mr-2 movies-slide carousel-nav-center owl-carousel" key={index}
+                                className="Carousel w-[19.5rem] ml-2 mr-2 movies-slide carousel-nav-center owl-carousel" 
+                                key={index}
                                 onMouseEnter={() => {
                                     let playBtn = document.querySelector(`.play-btn-${itemName.split(" ").includes('tv') ? "tv" : itemName.split(" ").includes('movies') ? itemName.split(" ")[0].slice(0, 1) : 's'}-${index}`);
                                     playBtn.style.display = "block";
@@ -61,27 +87,30 @@ const MainSlider = ({ itemName, items }) => {
                             >
                                 <Link
                                     to={
-                                        itemName.split(" ").includes("movies") ? `/movie-details/${item.id}` : `/series-details/${item.id}`
+                                        itemName.split(" ").includes("movies") ? `/movie-details/${item?.id}` : `/series-details/${item?.id}`
                                     }
                                     className={
                                         `play-btn-${itemName.split(" ").includes('tv') ? "tv" : itemName.split(" ").includes('movies') ? itemName.split(" ")[0].slice(0, 1) : 's'}-${index} p-btn hidden px-6 py-2.5 bg-cyan-400 text-black font-bold text-xs leading-tight uppercase rounded shadow-md relative z-10 transition duration-500 ease-in-out`
                                     }
                                 >
                                     Play Now</Link>
+                                    <div className="genres-pill py-1 px-3 rounded-full text-sm bg-cyan-400 hover:bg-cyan-600 text-black text-opacity-80 hover:text-white hover:drop-shadow-md duration-300 absolute z-30">
+                                        <span className=" text-xs font-bold">{genresList[item?.genre_ids[0]] === undefined ? genresList[item?.genre_ids[1]] === undefined ? "Drama" : genresList[item?.genre_ids[1]] : genresList[item?.genre_ids[0]]}</span>
+                                    </div>
                                 <div className="movie-item rounded-md">
-                                    <img loading="lazy" src={"https://image.tmdb.org/t/p/w342" + item.poster_path} alt="" />
+                                    <img loading="lazy" src={"https://image.tmdb.org/t/p/w342" + item?.poster_path} alt="" />
                                     <div className="movie-item-content">
                                         <div className="movie-item-title text-center">
-                                            {itemName.split(" ").includes("movies") ? item.title : item.name}
+                                            {itemName.split(" ").includes("movies") ? item?.title : item?.name}
                                         </div>
                                         <div className="movie-infos flex justify-center">
                                             <div className="movie-info">
                                                 <i className="bx bxs-star"></i>
-                                                <span>9.5</span>
+                                                <span>{item?.vote_average.toFixed(1)}</span>
                                             </div>
                                             <div className="movie-info">
                                                 <i className="bx bxs-time"></i>
-                                                <span>120 mins</span>
+                                                <span>{itemName.split(" ").includes("movies") ? new Date(item?.release_date).getFullYear() :new Date(item?.first_air_date).getFullYear()}</span>
                                             </div>
                                             <div className="movie-info">
                                                 <i className="bx bxs-comment-detail"></i>

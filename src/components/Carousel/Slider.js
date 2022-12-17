@@ -1,18 +1,23 @@
 import "./slider.css";
-import React, { useEffect } from 'react'
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
 import axios from "axios";
+import React, { useEffect } from 'react'
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import { Carousel } from 'react-responsive-carousel';
 
 function Slider({ sliderImage }) {
     const [trailer, setTrailer] = React.useState({});
 
+     // Variables for API
+     const baseUrl = "https://api.themoviedb.org/3";
+     const apiKey = process.env.REACT_APP_TMDB_API_KEY;
+     const language = "en-US";
+
+    // Get trailer
     const getTrailer = async (id) => {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=2beb22c118b4fce0394ce433a0c50f94&language=en-US`);
+        const response = await axios.get(`${baseUrl}/movie/${id}/videos?api_key=${apiKey}&language=${language}`);
         const trailerObj = {}
-        const videoBaseUrl = 'https://www.youtube.com/embed/';
-        const videoAutoplay = '?rel=0;&autoplay=1&mute=0';
-        trailerObj[id] = videoBaseUrl + response.data.results[0].key + videoAutoplay;
+        const videoBaseUrl = 'https://www.youtube.com/watch?v=';
+        trailerObj[id] = videoBaseUrl + response.data.results[0].key;
         setTrailer(prev => ({ ...prev, ...trailerObj }));
     }
 
@@ -22,6 +27,7 @@ function Slider({ sliderImage }) {
         })
     }, [sliderImage])
 
+    // Styles for slider arrows
     const arrowStyles = {
         position: 'absolute',
         zIndex: 2,
@@ -63,29 +69,29 @@ function Slider({ sliderImage }) {
                         )
                     }
                 >
-                    {sliderImage.map((item, index) => {
+                    {sliderImage?.map((item, index) => {
                         return <div className="hero-slide" key={index}>
                             <div className="owl-carousel carousel-nav-center" id="hero-carousel">
                                 <div className="hero-slide-item">
-                                    <img src={"https://image.tmdb.org/t/p/original" + item.backdrop_path} alt="" />
+                                    <img src={"https://image.tmdb.org/t/p/original" + item?.backdrop_path} alt="" />
                                     <div className="overlay"></div>
                                     <div className="hero-slide-item-content">
                                         <div className="item-content-wraper">
                                             <div className="item-content-title top-down">
-                                                {item.title}
+                                                {item?.title}
                                             </div>
                                             <div className="movie-infos top-down delay-2">
                                                 <div className="movie-info">
                                                     <i className="bx bxs-star"></i>
-                                                    <span>{item.vote_average} | </span>
+                                                    <span>{item?.vote_average?.toFixed(1)} | </span>
                                                 </div>
                                                 <div className="movie-info">
                                                     <i className="bx bxs-calendar"></i>
-                                                    <span>{item.release_date} | </span>
+                                                    <span>{new Date(item?.release_date).getFullYear()} | </span>
                                                 </div>
                                                 <div className="movie-info">
                                                     <i className="bx bxs-comment-detail"></i>
-                                                    <span>{item.vote_count} Reviews |</span>
+                                                    <span>{item?.vote_count} Reviews |</span>
                                                 </div>
                                                 <div className="movie-info">
                                                     <i className="bx bxs-right-arrow"></i>
@@ -93,10 +99,10 @@ function Slider({ sliderImage }) {
                                                 </div>
                                             </div>
                                             <div className="item-content-description top-down delay-4">
-                                                {item.overview}
+                                                {item?.overview}
                                             </div>
                                             <div className="item-action top-down delay-6">
-                                                <a href={`${trailer[item.id]}}`} target="_blank" rel="noreferrer" className="btn btn-hover">
+                                                <a href={`${trailer[item?.id]}}`} target="_blank" rel="noreferrer" className="btn btn-hover">
                                                     <i className="bx bxs-right-arrow"></i>
                                                     <span>Watch Trailer</span>
                                                 </a>

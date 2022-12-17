@@ -1,4 +1,6 @@
 import './App.css';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,25 +10,26 @@ import Movies from './components/Movies/Movies';
 import Series from './components/Series/Series';
 import TvShows from './components/TvShows/TvShows';
 import Main from './components/Main/Main';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import Episode from './components/Episodes/Episode';
 import MovieDetails from './components/MovieDeatils/MovieDetails';
 import SeriesDetails from './components/SeriesDetails/SeriesDetails';
-import Episode from './components/Episodes/Episode';
 import ActorDetails from './components/ActorDetails/ActorDetails';
 
 function App() {
+  // States
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([])
   const [series, setSeries] = useState([])
   const [tvShows, setTvShows] = useState([])
   const [searchTerm, setSearchTerm] = React.useState('');
+
+  // Variables for API
   const baseUrl = "https://api.themoviedb.org/3";
-  const apiKey = "2beb22c118b4fce0394ce433a0c50f94";
+  const apiKey = process.env.REACT_APP_TMDB_API_KEY;
   const language = "en-US";
   let page = 1;
-  console.log(page)
 
+  // Get Movies
   const getMovies = async (pageNo, searchTerm) => {
     setLoading(true);
     if(searchTerm === undefined || searchTerm === ''){
@@ -58,7 +61,6 @@ function App() {
         =${language}&query=${searchTerm}&page=${i}`);
         movies.push(...response.data.results);
       }
-      console.log(movies);
       setTimeout(() => {
         setMovies(movies);
         setLoading(false);
@@ -66,7 +68,8 @@ function App() {
     }
   }
 
-  const getSeries = async (pageNo) => {
+  // Get Series
+  const getSeries = async (pageNo, searchTerm) => {
     setLoading(true);
     if(searchTerm === undefined || searchTerm === ''){
       if (pageNo === 1) {
@@ -97,7 +100,6 @@ function App() {
         =${language}&query=${searchTerm}&page=${i}`);
         series.push(...response.data.results);
       }
-      console.log(series);
       setTimeout(() => {
         setSeries(series);
         setLoading(false);
@@ -106,10 +108,10 @@ function App() {
     }
   }
 
-  const getTvShows = async (pageNo) => {
+  // Get Tv Shows
+  const getTvShows = async (pageNo, searchTerm) => {
     setLoading(true);
     if(searchTerm === undefined || searchTerm === ''){
-      console.log("I'm here")
       if (pageNo === 1) {
         const response = await axios.get(`${baseUrl}/tv/popular?api_key=${apiKey}&language
         =${language}&page=${pageNo}`);
@@ -139,7 +141,6 @@ function App() {
         =${language}&query=${searchTerm}&page=${i}`);
         tvShows.push(...response.data.results);
       }
-      console.log(tvShows);
       setTimeout(() => {
         setTvShows(tvShows);
         setLoading(false);

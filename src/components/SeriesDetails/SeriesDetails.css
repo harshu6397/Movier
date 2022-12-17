@@ -23,6 +23,17 @@
     height: 100%;
 }
 
+a.play-btn:hover svg circle,
+a.play-btn:hover svg path {
+    /* fill: black; */
+    stroke: cyan;
+    stroke-width: 2px;
+}
+
+a.play-btn:hover svg path{
+    fill: cyan;
+}
+
 @media screen and (max-width: 768px){
     .deatils-conatiner .item-content-wraper {
         width: 100% !important;

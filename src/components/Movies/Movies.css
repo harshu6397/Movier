@@ -10,6 +10,7 @@
     margin: 0 auto;
     max-width: 1400px;
     padding: 0 20px;
+    min-height: 50vh;
 }
 
 .Carousel{
@@ -69,9 +70,6 @@
     z-index: 2;
 }
 
-.movies-container .items-container{
-    
-}
 
 @media screen and (max-width: 768px){
     .items-container{
@@ -81,31 +79,31 @@
 }
 
 @media screen and (max-width: 640px){
-    .Carousel{
+    .movies-container .Carousel{
         width: 18rem;
     }
 }
 
 @media screen and (max-width: 480px){
-    .Carousel{
+    .movies-container .Carousel{
         width: 15rem;
     }
 }
 
 @media screen and (max-width: 400px) {
-    .Carousel{
+    .movies-container .Carousel{
         width: 13rem;
     }
 }
 
 @media screen and (max-width: 360px){
-    .Carousel{
+    .movies-container .Carousel{
         width: 12rem;
     }
 }
 
 @media screen and (max-width: 320px){
-    .Carousel{
+    .movies-container .Carousel{
         width: 100%;
     }
 }

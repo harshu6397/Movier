@@ -1,26 +1,81 @@
-.deatils-conatiner .hero-slide-item{
-    height: 37rem;
-    padding-top: 0;
+.deatils-conatiner .hero-slide-item {
+  height: 37rem;
+  padding-top: 0;
 }
 
 .deatils-conatiner .item-content-wraper {
-    width: 40% !important;
+  width: 40% !important;
 }
 
-.c-btn{
-    width: 160px !important;
+.c-btn {
+  width: 160px !important;
 }
 
-.play-btn{
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* width */
+.scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.my-movie-details-header-label:hover .scrollbar::-webkit-scrollbar {
+    height: 4px;
+  } 
+
+/* Track */
+.scrollbar::-webkit-scrollbar-track:horizontal {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+.scrollbar::-webkit-scrollbar-thumb:horizontal {
+  background: rgb(117, 116, 116);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.scrollbar::-webkit-scrollbar-thumb:horizontal:hover {
+  background: rgb(49, 204, 204);
+}
+
+.modalCenter{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-@media screen and (max-width: 768px){
-    .deatils-conatiner .item-content-wraper {
-        width: 100% !important;
-    }
-    
+@media screen and (max-width: 768px) {
+  .deatils-conatiner .item-content-wraper {
+    width: 100% !important;
+    padding-right: 2rem !important;
+  }
+
+  .deatils-conatiner .item-content-wraper {
+    justify-content: flex-end;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 50px 50px rgb(0 0 0 / 70%);
+  }
+
+  .deatils-conatiner .hero-section {
+    height: 30rem !important;
+  }
+
+  .deatils-conatiner .hero-slide {
+    height: 30rem !important;
+  }
+
+  .deatils-conatiner #hero-carousel {
+    height: 30rem !important;
+  }
+
+  .deatils-conatiner .hero-slide-item {
+    height: 30rem !important;
+  }
 }
