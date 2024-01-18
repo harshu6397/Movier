@@ -123,17 +123,21 @@ const ActorDetails = () => {
                                 credits
                             </h1>
                         </div>
-                        <div className='mt-8 m-auto grid grid-cols-1 md:gap-6 md:grid-cols-3 lg:grid-cols-4 2xl:grid-col-5'>
+                        <div className='mt-8 m-auto grid grid-cols-1 md:gap-6 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-col-5'>
                             {
                                 movieCredits?.length === 0 ? <div className='text-white text-2xl'>No Movie Credits</div> : 
                                 movieCredits?.cast?.map((item, index) => {
                                     return <div 
-                                        className="Carousel episode-item w-full 2xl:w-[35rem] xl:w-[21rem] ml-2 mr-2 my-3 movies-slide carousel-nav-center owl-carousel"
+                                        className="Carousel episode-item w-full ml-2 mr-2 my-3 movies-slide carousel-nav-center owl-carousel"
                                         key={index}
                                     >
                                         <div className=" rounded-md relative">
                                             <div className="img-container">
-                                                <img className={`rounded-md object-cover 2xl:object-fill`} loading="lazy" style={{ width: "100%", height: `${item?.poster_path ? "37rem" : "37rem"}` }} src={"https://image.tmdb.org/t/p/original" + item?.poster_path} alt="" />
+                                                {
+                                                    item?.poster_path ? 
+                                                    <img className={`rounded-md object-cover 2xl:object-fill`} loading="lazy" style={{ width: "100%", height: `${item?.poster_path ? "37rem" : "37rem"}` }} src={"https://image.tmdb.org/t/p/original" + item?.poster_path} alt="" /> : 
+                                                    <img className={`rounded-md object-contain 2xl:object-fill`} loading="lazy" style={{ width: "100%", height: `${item?.poster_path ? "37rem" : "37rem"}` }} src="https://imgs.search.brave.com/j3kbqacpDucyA-AHXDIgXQYn_4vJ8sxbTNH3NRw3hVo/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDEwNjE1/OTI4LmpwZw" alt="" />
+                                                }
                                             </div>
                                             <div className="blur-div backdrop-blur-sm w-full h-full center opacity-0 transition duration-1000 pt-4 pl-4 pr-4 pb-4 overflow-y-scroll">
                                                 {item?.overview}
